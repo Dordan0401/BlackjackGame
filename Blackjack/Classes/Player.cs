@@ -54,6 +54,7 @@ namespace Blackjack
         public int GetCardTotal(List<Cards> hand)
         {
             int cardTotal = 0;
+            int cardTotalCheck = 0;
             foreach (Cards card in hand)
             {
                 if (card.Face == Face.Ace && cardTotal <= 10)
@@ -64,7 +65,22 @@ namespace Blackjack
                 {
                     card.Value = 1;
                 }
-                cardTotal += card.Value;
+                cardTotalCheck += card.Value;
+            }
+            if (cardTotalCheck > 21)
+            {
+                foreach (Cards cardCheck in hand)
+                {
+                    if (cardCheck.Face == Face.Ace)
+                    {
+                        cardCheck.Value = 1;
+                    }
+                    cardTotal += cardCheck.Value;
+                }
+            }
+            else
+            {
+                cardTotal = cardTotalCheck;
             }
             return cardTotal;
         }

@@ -87,11 +87,11 @@ namespace Blackjack
                         Console.WriteLine("You draw a card\n");
 
                         user.DrawCard(gameDeck);
-                        CheckForBlackjack();
 
                         WriteDealerHand();
                         WritePlayerHand();
 
+                        CheckForBlackjack();
                         CheckForBust();
                         HitOrStay();
                         Console.ReadKey();
